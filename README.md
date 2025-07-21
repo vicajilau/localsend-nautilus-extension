@@ -31,9 +31,3 @@ cp src/localsend_extension.py ~/.local/share/nautilus-python/extensions/
 2. Restart Nautilus: `nautilus -q`
 3. Right-click on any file(s) in Nautilus
 4. Select "Send with LocalSend" from the context menu
-debuild -us -uc
-```
-
-## License
-
-GPL-3+
