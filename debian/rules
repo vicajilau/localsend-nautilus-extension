@@ -1,0 +1,9 @@
+#!/usr/bin/make -f
+
+%:
+	dh $@
+
+override_dh_auto_install:
+	# Install the extension
+	install -d $(CURDIR)/debian/nautilus-localsend-extension/usr/share/nautilus-python/extensions
+	install -m 644 src/localsend_extension.py $(CURDIR)/debian/nautilus-localsend-extension/usr/share/nautilus-python/extensions/

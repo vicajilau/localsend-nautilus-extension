@@ -1,0 +1,20 @@
+Source: nautilus-localsend-extension
+Version: 1.0.0
+Section: gnome
+Priority: optional
+Maintainer: Damian Akpan <damiakpan@gmail.com>
+Standards-Version: 4.6.0
+Homepage: https://github.com/yungwarlock/nautilus-localsend-extension
+
+Package: nautilus-localsend-extension
+Architecture: all
+Recommends: localsend
+Depends: ${misc:Depends}, python3-nautilus, nautilus
+Description: Nautilus extension to send files with LocalSend
+ This extension adds a "Send with LocalSend" menu item to the Nautilus
+ file manager context menu, allowing users to easily share files using
+ the LocalSend application.
+ .
+ LocalSend is a cross-platform tool to securely share files and messages
+ with nearby devices through the local network without needing an internet
+ connection.
