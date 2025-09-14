@@ -75,7 +75,7 @@ class LocalSendExtension(Nautilus.MenuProvider, GObject.GObject):
                 subprocess.Popen(command)
                 return
             # Try Flatpak
-            flatpak_cmd = ["flatpak", "run", "app.localsend.localsend"] + filepaths
+            flatpak_cmd = ["flatpak", "run", "org.localsend.localsend_app"] + filepaths
             try:
                 subprocess.Popen(flatpak_cmd)
                 return
