@@ -61,7 +61,6 @@ class LocalSendExtension(Nautilus.MenuProvider, GObject.GObject):
                 "localsend",      # Alternative name
                 "LocalSend",      # Capitalized version
             ]
-            
             # Find which LocalSend command is available
             localsend_cmd = None
             for cmd in localsend_commands:
@@ -71,16 +70,23 @@ class LocalSendExtension(Nautilus.MenuProvider, GObject.GObject):
                     break
                 except subprocess.CalledProcessError:
                     continue
-            
-            if localsend_cmd is None:
-                print("LocalSend not found. Please install LocalSend or check if it's in your PATH.")
+            if localsend_cmd is not None:
+                command = [localsend_cmd] + filepaths
+                subprocess.Popen(command)
                 return
-            
-            # Build command with all file paths
-            command = [localsend_cmd] + filepaths
-            
-            # Launch LocalSend with the files
-            subprocess.Popen(command)
-            
+            # Try Flatpak
+            flatpak_cmd = ["flatpak", "run", "app.localsend.localsend"] + filepaths
+            try:
+                subprocess.Popen(flatpak_cmd)
+                return
+            except Exception:
+                pass
+            # Try Snap
+            snap_cmd = ["snap", "run", "localsend"] + filepaths
+            try:
+                subprocess.Popen(snap_cmd)
+                return
+            except Exception:
+                pass
         except Exception as e:
             print(f"Failed to send files with LocalSend: {e}")
